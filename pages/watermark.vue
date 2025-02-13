@@ -3,21 +3,28 @@
     <Title>添加水印 - 老狗图片工厂</Title>
   </Head>
   <div class="p-4 max-w-3xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4 text-center">水印工具</h1>
+    <!-- 标题 -->
+    <h1 class="text-3xl sm:text-4xl font-extrabold mb-6 text-center">
+      水印工具
+    </h1>
 
-    <div class="mb-4">
-      <label for="watermark-text" class="block font-medium">水印文字</label>
+    <!-- 水印文字输入 -->
+    <div class="mb-6">
+      <label for="watermark-text" class="block text-lg font-medium"
+        >水印文字</label
+      >
       <input
         id="watermark-text"
         v-model="watermarkText"
         type="text"
-        class="mt-1 p-2 block w-full rounded-md bg-gray-100/80 text-black border-2 border-gray-300 shadow-sm focus:outline-none focus:border-blue-500 focus:ring-indigo-500 duration-200 ease-in-out"
+        class="mt-2 p-3 block w-full rounded-md bg-white text-black border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
       />
     </div>
 
-    <div class="mb-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <!-- 水印配置 -->
+    <div class="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
       <div>
-        <label for="watermark-size" class="block font-medium"
+        <label for="watermark-size" class="block text-lg font-medium"
           >水印文字大小(px)</label
         >
         <input
@@ -27,17 +34,17 @@
           min="10"
           max="100"
           step="1"
-          class="mt-1 p-2 block w-full rounded-md bg-gray-700 text-gray-100 shadow-sm outline-none border-2 border-gray-500 focus:border-blue-500 focus:ring-indigo-500 duration-200 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-white text-black border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         />
       </div>
       <div>
-        <label for="watermark-position" class="block font-medium"
+        <label for="watermark-position" class="block text-lg font-medium"
           >水印位置</label
         >
         <select
           id="watermark-position"
           v-model="watermarkPosition"
-          class="mt-1 p-2 block w-full rounded-md bg-gray-700 text-gray-100 shadow-sm outline-none border-2 border-gray-500 focus:border-blue-500 focus:ring-indigo-500 duration-200 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-white text-black border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         >
           <option value="center">居中</option>
           <option value="top-left">左上</option>
@@ -47,11 +54,13 @@
         </select>
       </div>
       <div>
-        <label for="watermark-font" class="block font-medium">水印字体</label>
+        <label for="watermark-font" class="block text-lg font-medium"
+          >水印字体</label
+        >
         <select
           id="watermark-font"
           v-model="watermarkFont"
-          class="mt-1 p-2 block w-full rounded-md bg-gray-700 text-gray-100 shadow-sm outline-none border-2 border-gray-500 focus:border-blue-500 focus:ring-indigo-500 duration-200 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-white text-black border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         >
           <option value="SmileySans-Oblique">SmileySans-Oblique</option>
           <option value="Arial">Arial</option>
@@ -60,13 +69,15 @@
       </div>
     </div>
 
-    <div class="mb-4">
+    <!-- 重新处理按钮 -->
+    <div class="mb-6">
       <button
         @click="reprocessImages"
         :disabled="processing || processedImages.length === 0"
-        class="bg-blue-600 text-white font-medium py-2 px-4 rounded-lg focus:outline-none w-full duration-300 ease-in-out"
+        class="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition duration-300 ease-in-out"
         :class="{
-          'hover:bg-blue-500': processedImages.length > 0,
+          'cursor-not-allowed': processing || processedImages.length === 0,
+          'hover:bg-purple-700': processedImages.length > 0,
           'hover:bg-red-300': processedImages.length === 0,
         }"
       >
@@ -74,14 +85,14 @@
       </button>
     </div>
 
+    <!-- 文件上传区域 -->
     <div
       @dragover.prevent="dragOver = true"
       @dragleave="dragOver = false"
       @drop.prevent="handleDrop"
-      @click="$refs.fileInput.click()"
-      class="mt-4 border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 duration-300 ease-in-out"
+      class="mt-6 border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:border-blue-800 transition duration-300 ease-in-out"
       :class="{
-        'border-blue-500 bg-blue-50': dragOver,
+        'border-purple-700 bg-blue-50': dragOver,
         'border-gray-300': !dragOver,
       }"
     >
@@ -105,7 +116,7 @@
           <button
             type="button"
             @click.stop="$refs.fileInput.click()"
-            class="text-blue-500 hover:text-blue-400 font-medium focus:outline-none"
+            class="text-gray-800 font-bold hover:text-blue-800 focus:outline-none"
           >
             选择文件
           </button>
@@ -114,61 +125,63 @@
       </div>
     </div>
 
-    <div v-if="processedImages.length > 0" class="mt-4 flex space-x-4">
+    <!-- 处理图片按钮 -->
+    <div v-if="processedImages.length > 0" class="mt-6 flex space-x-4">
       <button
         @click="deleteAll"
-        class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg focus:outline-none w-full"
+        class="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg focus:outline-none transition duration-300 ease-in-out"
       >
         删除全部
       </button>
       <button
         @click="downloadAll"
-        class="text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md focus:outline-none w-full"
+        class="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg focus:outline-none transition duration-300 ease-in-out"
       >
         下载全部
       </button>
     </div>
 
-    <div v-if="processing" class="mt-4 text-center text-gray-600">
+    <!-- 处理中状态 -->
+    <div v-if="processing" class="mt-6 text-center text-gray-600">
       处理中... ({{ processedCount }}/{{ totalFiles }})
     </div>
 
+    <!-- 已处理图片预览 -->
     <div v-if="processedImages.length > 0" class="mt-6">
-      <h3 class="text-lg font-medium mb-4">已处理图片</h3>
-      <div class="grid grid-cols-3 gap-4">
+      <h3 class="text-xl font-semibold mb-4">已处理图片</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
         <div
           v-for="(image, index) in processedImages"
           :key="index"
-          class="relative group rounded-md bg-gray-500/50 shadow-md shadow-gray-500 overflow-hidden cursor-pointer"
+          class="relative group rounded-lg bg-white shadow-lg hover:scale-105 transition duration-300 ease-in-out"
         >
           <img
             :src="image.thumbnail"
-            class="w-full h-32 object-contain"
+            class="w-full h-32 object-contain rounded-t-lg"
             @click="previewImage(image)"
             alt="已处理图片缩略图"
           />
           <div
-            class="preview-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-            @click.stop="previewImage(image)"
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
           >
             <button
               @click.stop="previewImage(image)"
-              class="text-white bg-green-500 hover:bg-green-600 px-2 py-1 rounded-md focus:outline-none"
+              class="text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md"
             >
-              <IconFullscreen class="w-6 h-6" color="rgb(243 244 246)" />
+              预览
             </button>
-            <div class="absolute bottom-1 right-1 flex space-x-2 justify-start">
+            <div class="absolute top-2 right-2 flex space-x-2">
               <button
                 @click.stop="removeImage(index)"
-                class="text-sm text-white bg-red-500 hover:bg-red-600 px-2 py-1 flex justify-center items-center rounded-full focus:outline-none"
+                class="text-white bg-red-500 hover:bg-red-600 px-2 py-1 rounded-full"
               >
-                <IconDelete class="w-4 h-4" color="rgb(243 244 246)" />
+                X
               </button>
               <button
                 @click.stop="downloadImage(image)"
-                class="text-sm text-white bg-blue-600 hover:bg-blue-700 px-2 py-1 flex justify-center items-center rounded-full focus:outline-none"
+                class="text-white bg-blue-600 hover:bg-purple-700 px-2 py-1 rounded-full"
               >
-                <IconDownload class="w-4 h-4" color="rgb(243 244 246)" />
+                下载
               </button>
             </div>
           </div>
@@ -176,6 +189,7 @@
       </div>
     </div>
 
+    <!-- 全屏预览 -->
     <div
       v-if="previewImageData"
       class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
@@ -187,13 +201,13 @@
           :src="previewImageData.original"
           class="max-w-full max-h-full cursor-pointer"
           @click="previewImageData = null"
-          alt="fullscreen-overview-image"
+          alt="全屏预览"
         />
         <button
           @click="previewImageData = null"
-          class="text-white bg-red-600/40 hover:bg-red-700/40 px-2 py-1 rounded-lg focus:outline-none absolute top-2 right-2"
+          class="text-white bg-red-600 px-2 py-1 rounded-lg absolute top-2 right-2"
         >
-          <IconClose class="w-6 h-6" color="rgb(243 244 246)" />
+          关闭
         </button>
       </div>
     </div>
@@ -395,5 +409,9 @@ const previewImage = (image) => {
 
 img {
   cursor: pointer;
+}
+
+option {
+  color: black;
 }
 </style>

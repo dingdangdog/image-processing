@@ -1,24 +1,31 @@
 <template>
   <div
-    class="w-full h-16 bg-gray-900 fixed top-0 left-0 flex justify-between items-center transition-transform duration-500 ease-in-out transform"
+    class="w-full h-16 bg-gradient-to-r from-purple-700 via-blue-600 to-teal-500 fixed top-0 left-0 flex justify-between items-center px-4 md:px-8 transition-transform duration-500 ease-in-out transform"
     :class="isMenuVisible ? 'translate-y-0' : '-translate-y-full'"
   >
+    <!-- 左侧区域：标题和捐赠按钮 -->
     <div class="w-1/2 flex items-center h-full">
-      <a class="px-4 md:pl-8 text-lg md:text-xl" href="/">
+      <a
+        class="text-lg md:text-xl text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out"
+        href="/"
+      >
         {{ $t("title") }}
       </a>
       <a
-        class="h-full flex justify-center items-center px-4 hover:bg-gray-800 case-in-out duration-300"
+        class="h-full flex justify-center items-center px-4 text-white font-medium hover:bg-blue-600 hover:text-white transition-all duration-300 ease-in-out rounded-md ml-4"
         href="/donate"
-        >{{ $t("menu.donate") }}
+      >
+        {{ $t("menu.donate") }}
       </a>
     </div>
 
-    <!-- <div class="w-1/2 flex h-full"></div> -->
-
-    <div class="w-1/2 h-full flex justify-end items-center">
-      <a href="https://github.com/dingdangdog/dingdangdog.github.io">
-        <span><IconGithub class="w-8 h-8" :color="`rgb(243 244 246)`" /></span>
+    <!-- 右侧区域：GitHub链接和语言选择 -->
+    <div class="w-1/2 h-full flex justify-end items-center space-x-4">
+      <a
+        href="https://github.com/dingdangdog/dingdangdog.github.io"
+        class="text-white hover:text-gray-300 transition-all duration-300 ease-in-out"
+      >
+        <IconGithub class="w-8 h-8" :color="`rgb(243 244 246)`" />
       </a>
       <LocaleSelect />
     </div>
@@ -55,6 +62,11 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+/* 增加动画效果，使头部在显示时更流畅 */
+header {
+  transition: transform 0.3s ease-in-out;
+}
+
 header.hidden {
   transform: translateY(-100%);
 }
