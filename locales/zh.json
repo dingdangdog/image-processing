@@ -1,11 +1,39 @@
 {
   "title": "老狗图片工厂",
-  "hello": "欢迎",
-  "menu": {
-    "menu1": "菜单1",
-    "menu2": "菜单2",
-    "menu3": "菜单3",
-    "menu4": "菜单4",
+  "header": {
     "donate": "捐赠"
+  },
+  "home": {
+    "welcome": "欢迎来到 老狗图片工厂",
+    "tip": "选择你需要的工具，开始编辑图片吧！",
+    "start-button": "立即开始",
+    "watermark": {
+      "title": "水印工具",
+      "description": "轻松给你的图片添加水印"
+    }
+  },
+  "watermark": {
+    "title": "水印工具",
+    "description": "为图片添加自定义水印",
+    "keywords": "水印，图像水印，照片水印，在图像上添加文字，保护照片，版权，图像编辑器，在线水印，离线，月上老狗",
+    "mark-text": "水印文字",
+    "mark-size": "水印文字大小",
+    "mark-size-option": {
+      "center": "居中",
+      "top-left": "左上",
+      "top-right": "右上",
+      "bottom-left": "左下",
+      "bottom-right": "右下"
+    },
+    "mark-position": "水印位置",
+    "mark-font": "水印字体",
+    "upload-tip": "拖放图片到此区域或",
+    "upload-button": "选择文件",
+    "upload-types": "支持 JPEG、PNG、WEBP 等图片格式",
+    "delete-all-button": "删除全部",
+    "download-all-button": "下载全部",
+    "running": "处理中...",
+    "rerun": "重新处理图片",
+    "ready": "已处理图片"
   }
 }

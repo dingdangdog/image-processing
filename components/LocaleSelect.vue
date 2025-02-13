@@ -54,7 +54,7 @@ onUnmounted(() => {
       >
         <div
           class="p-1 hover:bg-gray-800 text-center rounded-sm"
-          :class="{ 'bg-gray-600': lc.code === locale }"
+          :class="{ 'bg-blue-600/50': lc.code === locale }"
         >
           {{ lc.name }}
         </div>

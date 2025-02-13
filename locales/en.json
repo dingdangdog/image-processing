@@ -1,11 +1,39 @@
 {
   "title": "ImageFactory",
-  "hello": "Welcome",
-  "menu": {
-    "menu1": "menu1",
-    "menu2": "menu2",
-    "menu3": "menu3",
-    "menu4": "menu4",
-    "donate": "donate"
+  "header": {
+    "donate": "Donate"
+  },
+  "home": {
+    "welcome": "Welcome to ImageFactory",
+    "tip": "Select the tool you need and start editing images!",
+    "start-button": "Get Started",
+    "watermark": {
+      "title": "Watermark Tool",
+      "description": "Easily add watermarks to your images"
+    }
+  },
+  "watermark": {
+    "title": "Watermark Tool",
+    "description": "Add custom watermarks to images",
+    "keywords": "watermark, image watermark, photo watermark, add text to image, protect photos, copyright, image editor, online watermark, offline, 月上老狗",
+    "mark-text": "Watermark Text",
+    "mark-size": "Watermark Text Size",
+    "mark-size-option": {
+      "center": "Center",
+      "top-left": "Top Left",
+      "top-right": "Top Right",
+      "bottom-left": "Bottom Left",
+      "bottom-right": "Bottom Right"
+    },
+    "mark-position": "Watermark Position",
+    "mark-font": "Watermark Font",
+    "upload-tip": "Drag and drop images here or",
+    "upload-button": "Select Files",
+    "upload-types": "Supports JPEG, PNG, WEBP, and other image formats",
+    "delete-all-button": "Delete All",
+    "download-all-button": "Download All",
+    "running": "Processing...",
+    "rerun": "Reprocess Images",
+    "ready": "Processed Images"
   }
 }

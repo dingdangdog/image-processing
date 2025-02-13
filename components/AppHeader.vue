@@ -5,19 +5,19 @@
   >
     <!-- 左侧区域：标题和捐赠按钮 -->
     <div class="w-1/2 flex items-center h-full">
-      <route-link
+      <a
         class="text-lg md:text-xl text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out"
-        to="/"
+        href="/"
       >
         {{ $t("title") }}
-      </route-link>
-      <a
+      </a>
+      <!-- <a
         class="h-full flex justify-center items-center px-4 text-white font-medium hover:bg-blue-600 hover:text-white transition-all duration-300 ease-in-out rounded-md ml-4"
         href="https://dingdangdog.github.io/donate/"
         target="_blank"
       >
-        {{ $t("menu.donate") }}
-      </a>
+        {{ $t("header.donate") }}
+      </a> -->
     </div>
 
     <!-- 右侧区域：GitHub链接和语言选择 -->

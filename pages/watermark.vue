@@ -1,18 +1,19 @@
 <template>
   <Head>
-    <Title>添加水印 - 老狗图片工厂</Title>
+    <Title>{{ $t("watermark.title") }} - {{ $t("title") }}</Title>
   </Head>
   <div class="p-4 max-w-3xl mx-auto">
-    <!-- 标题 -->
     <h1 class="text-3xl sm:text-4xl font-extrabold mb-6 text-center">
-      水印工具
+      {{ $t("watermark.title") }}
     </h1>
+    <p class="text-gray-200 my-2 text-center">
+      {{ $t("watermark.description") }}
+    </p>
 
-    <!-- 水印文字输入 -->
     <div class="mb-6">
-      <label for="watermark-text" class="block text-lg font-medium"
-        >水印文字</label
-      >
+      <label for="watermark-text" class="block text-lg font-medium">{{
+        $t("watermark.mark-text")
+      }}</label>
       <input
         id="watermark-text"
         v-model="watermarkText"
@@ -21,11 +22,10 @@
       />
     </div>
 
-    <!-- 水印配置 -->
     <div class="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
       <div>
         <label for="watermark-size" class="block text-lg font-medium"
-          >水印文字大小(px)</label
+          >{{ $t("watermark.mark-size") }}(px)</label
         >
         <input
           id="watermark-size"
@@ -38,25 +38,35 @@
         />
       </div>
       <div>
-        <label for="watermark-position" class="block text-lg font-medium"
-          >水印位置</label
-        >
+        <label for="watermark-position" class="block text-lg font-medium">{{
+          $t("watermark.mark-position")
+        }}</label>
         <select
           id="watermark-position"
           v-model="watermarkPosition"
           class="mt-2 p-3 block w-full rounded-md bg-white text-gray-600 border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         >
-          <option value="center">居中</option>
-          <option value="top-left">左上</option>
-          <option value="top-right">右上</option>
-          <option value="bottom-left">左下</option>
-          <option value="bottom-right">右下</option>
+          <option value="center">
+            {{ $t("watermark.mark-size-option.center") }}
+          </option>
+          <option value="top-left">
+            {{ $t("watermark.mark-size-option.top-left") }}
+          </option>
+          <option value="top-right">
+            {{ $t("watermark.mark-size-option.top-right") }}
+          </option>
+          <option value="bottom-left">
+            {{ $t("watermark.mark-size-option.bottom-left") }}
+          </option>
+          <option value="bottom-right">
+            {{ $t("watermark.mark-size-option.bottom-right") }}
+          </option>
         </select>
       </div>
       <div>
-        <label for="watermark-font" class="block text-lg font-medium"
-          >水印字体</label
-        >
+        <label for="watermark-font" class="block text-lg font-medium">{{
+          $t("watermark.mark-font")
+        }}</label>
         <select
           id="watermark-font"
           v-model="watermarkFont"
@@ -69,7 +79,6 @@
       </div>
     </div>
 
-    <!-- 重新处理按钮 -->
     <div class="mb-6">
       <button
         @click="reprocessImages"
@@ -81,11 +90,10 @@
           'hover:bg-red-300': processedImages.length === 0,
         }"
       >
-        重新处理图片
+        {{ $t("watermark.rerun") }}
       </button>
     </div>
 
-    <!-- 文件上传区域 -->
     <div
       @dragover.prevent="dragOver = true"
       @dragleave="dragOver = false"
@@ -113,43 +121,40 @@
         }"
       >
         <p>
-          拖放图片到此区域或
+          {{ $t("watermark.upload-tip") }}
           <button
             type="button"
             @click.stop="$refs.fileInput.click()"
             class="text-purple-800 font-bold hover:text-purple-700 focus:outline-none"
           >
-            选择文件
+            {{ $t("watermark.upload-button") }}
           </button>
         </p>
-        <p class="text-sm mt-2">支持 JPEG、PNG、WEBP 等图片格式</p>
+        <p class="text-sm mt-2">{{ $t("watermark.upload-types") }}</p>
       </div>
     </div>
 
-    <!-- 处理图片按钮 -->
     <div v-if="processedImages.length > 0" class="mt-6 flex space-x-4">
       <button
         @click="deleteAll"
         class="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg focus:outline-none transition duration-300 ease-in-out"
       >
-        删除全部
+        {{ $t("watermark.delete-all-button") }}
       </button>
       <button
         @click="downloadAll"
         class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg focus:outline-none transition duration-300 ease-in-out"
       >
-        下载全部
+        {{ $t("watermark.download-all-button") }}
       </button>
     </div>
 
-    <!-- 处理中状态 -->
     <div v-if="processing" class="mt-6 text-center text-gray-600">
-      处理中... ({{ processedCount }}/{{ totalFiles }})
+      {{ $t("watermark.running") }} ({{ processedCount }}/{{ totalFiles }})
     </div>
 
-    <!-- 已处理图片预览 -->
     <div v-if="processedImages.length > 0" class="mt-6">
-      <h3 class="text-xl font-semibold mb-4">已处理图片</h3>
+      <h3 class="text-xl font-semibold mb-4">{{ $t("watermark.ready") }}</h3>
       <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
         <div
           v-for="(image, index) in processedImages"
@@ -160,10 +165,10 @@
             :src="image.thumbnail"
             class="w-full h-32 object-contain"
             @click="previewImage(image)"
-            alt="已处理图片缩略图"
+            alt="thumnimage"
           />
           <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            class="preview-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
           >
             <button
               @click.stop="previewImage(image)"
@@ -190,7 +195,6 @@
       </div>
     </div>
 
-    <!-- 全屏预览 -->
     <div
       v-if="previewImageData"
       class="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
@@ -202,13 +206,13 @@
           :src="previewImageData.original"
           class="max-w-full max-h-full cursor-pointer"
           @click="previewImageData = null"
-          alt="全屏预览"
+          alt="Fullscreen Overview"
         />
         <button
           @click="previewImageData = null"
-          class="text-white bg-red-600 px-2 py-1 rounded-lg absolute top-2 right-2"
+          class="text-white bg-red-600/50 hover:bg-red-500/50 px-2 py-1 rounded-lg absolute top-2 right-2"
         >
-          关闭
+          <IconClose class="w-4 h-4" color="rgb(243 244 246)" />
         </button>
       </div>
     </div>
