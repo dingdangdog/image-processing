@@ -7,7 +7,7 @@
     <div class="w-1/2 flex items-center h-full">
       <a
         class="text-lg md:text-xl text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out"
-        href="/"
+        :href="localePath('/')"
       >
         {{ $t("title") }}
       </a>
