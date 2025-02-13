@@ -15,7 +15,7 @@
         <!-- 工具 1: 图片加水印 -->
         <router-link
           to="/watermark"
-          class="min-w-[30%] border border-gray-800/10 flex justify-center items-center p-6 rounded-lg shadow-lg hover:scale-105 transform transition duration-300 ease-in-out hover:bg-indigo-500"
+          class="min-w-[30%] border border-gray-100/10 flex justify-center items-center p-6 rounded-lg shadow-md shadow-gray-300 hover:scale-105 transform transition duration-300 ease-in-out hover:bg-indigo-500"
         >
           <div class="text-center">
             <svg
