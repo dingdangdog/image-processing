@@ -11,7 +11,7 @@
       </div>
 
       <!-- 工具列表 -->
-      <div class="flex justify-center">
+      <div class="flex flex-col md:flex-row justify-center">
         <!-- 工具 1: 图片加水印 -->
         <router-link
           to="/watermark"

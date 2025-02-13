@@ -1,28 +1,32 @@
 <template>
   <div
-    class="w-full h-16 bg-gradient-to-r from-purple-700 via-blue-600 to-teal-500 fixed top-0 left-0 flex justify-between items-center px-4 md:px-8 transition-transform duration-500 ease-in-out transform"
+    class="w-full h-16 bg-gradient-to-r from-red-700 via-green-700 to-blue-700 fixed top-0 left-0 flex justify-between items-center px-4 md:px-8 transition-transform duration-500 ease-in-out transform"
     :class="isMenuVisible ? 'translate-y-0' : '-translate-y-full'"
   >
     <!-- 左侧区域：标题和捐赠按钮 -->
     <div class="w-1/2 flex items-center h-full">
-      <a
+      <route-link
         class="text-lg md:text-xl text-white font-semibold hover:text-gray-300 transition duration-300 ease-in-out"
-        href="/"
+        to="/"
       >
         {{ $t("title") }}
-      </a>
+      </route-link>
       <a
         class="h-full flex justify-center items-center px-4 text-white font-medium hover:bg-blue-600 hover:text-white transition-all duration-300 ease-in-out rounded-md ml-4"
-        href="/donate"
+        href="https://dingdangdog.github.io/donate/"
+        target="_blank"
       >
         {{ $t("menu.donate") }}
       </a>
     </div>
 
     <!-- 右侧区域：GitHub链接和语言选择 -->
-    <div class="w-1/2 h-full flex justify-end items-center space-x-4">
+    <div
+      class="w-1/2 h-full flex justify-end items-center space-x-1 md:space-x-4"
+    >
       <a
-        href="https://github.com/dingdangdog/dingdangdog.github.io"
+        href="https://github.com/dingdangdog/image-factory"
+        target="_blank"
         class="text-white hover:text-gray-300 transition-all duration-300 ease-in-out"
       >
         <IconGithub class="w-8 h-8" :color="`rgb(243 244 246)`" />
