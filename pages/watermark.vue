@@ -34,7 +34,7 @@
           min="10"
           max="100"
           step="1"
-          class="mt-2 p-3 block w-full rounded-md bg-white text-black border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-white text-gray-600 border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         />
       </div>
       <div>
@@ -44,7 +44,7 @@
         <select
           id="watermark-position"
           v-model="watermarkPosition"
-          class="mt-2 p-3 block w-full rounded-md bg-white text-black border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-white text-gray-600 border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         >
           <option value="center">居中</option>
           <option value="top-left">左上</option>
@@ -60,7 +60,7 @@
         <select
           id="watermark-font"
           v-model="watermarkFont"
-          class="mt-2 p-3 block w-full rounded-md bg-white text-black border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-white text-gray-600 border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         >
           <option value="SmileySans-Oblique">SmileySans-Oblique</option>
           <option value="Arial">Arial</option>
@@ -90,7 +90,8 @@
       @dragover.prevent="dragOver = true"
       @dragleave="dragOver = false"
       @drop.prevent="handleDrop"
-      class="mt-6 border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:border-blue-800 transition duration-300 ease-in-out"
+      @click.stop="$refs.fileInput.click()"
+      class="mt-6 border-2 border-dashed rounded-lg p-8 text-center cursor-pointer hover:border-purple-700 transition duration-300 ease-in-out"
       :class="{
         'border-purple-700 bg-blue-50': dragOver,
         'border-gray-300': !dragOver,
@@ -116,7 +117,7 @@
           <button
             type="button"
             @click.stop="$refs.fileInput.click()"
-            class="text-gray-800 font-bold hover:text-blue-800 focus:outline-none"
+            class="text-purple-800 font-bold hover:text-purple-700 focus:outline-none"
           >
             选择文件
           </button>
@@ -135,7 +136,7 @@
       </button>
       <button
         @click="downloadAll"
-        class="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg focus:outline-none transition duration-300 ease-in-out"
+        class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg focus:outline-none transition duration-300 ease-in-out"
       >
         下载全部
       </button>
@@ -153,11 +154,11 @@
         <div
           v-for="(image, index) in processedImages"
           :key="index"
-          class="relative group rounded-lg bg-white shadow-lg hover:scale-105 transition duration-300 ease-in-out"
+          class="relative group rounded-lg overflow-hidden bg-gray-400 shadow-md shadow-gray-300 hover:scale-105 transition duration-300 ease-in-out"
         >
           <img
             :src="image.thumbnail"
-            class="w-full h-32 object-contain rounded-t-lg"
+            class="w-full h-32 object-contain"
             @click="previewImage(image)"
             alt="已处理图片缩略图"
           />
@@ -166,22 +167,22 @@
           >
             <button
               @click.stop="previewImage(image)"
-              class="text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md"
+              class="text-white bg-green-600 hover:bg-green-700 px-2 py-1 rounded-md"
             >
-              预览
+              <IconFullscreen class="w-6 h-6" color="rgb(243 244 246)" />
             </button>
-            <div class="absolute top-2 right-2 flex space-x-2">
+            <div class="absolute bottom-1 right-1 flex space-x-2">
               <button
                 @click.stop="removeImage(index)"
-                class="text-white bg-red-500 hover:bg-red-600 px-2 py-1 rounded-full"
+                class="text-white bg-red-500 hover:bg-red-600 p-1 rounded-full"
               >
-                X
+                <IconDelete class="w-4 h-4" color="rgb(243 244 246)" />
               </button>
               <button
                 @click.stop="downloadImage(image)"
-                class="text-white bg-blue-600 hover:bg-purple-700 px-2 py-1 rounded-full"
+                class="text-white text-sm bg-blue-600 hover:bg-purple-700 p-1 rounded-full"
               >
-                下载
+                <IconDownload class="w-4 h-4" color="rgb(243 244 246)" />
               </button>
             </div>
           </div>
