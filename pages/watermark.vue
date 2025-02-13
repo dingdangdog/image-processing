@@ -38,7 +38,7 @@
 
     <div class="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
       <div>
-        <label for="watermark-size" class="block text-lg font-medium"
+        <label for="watermark-size" class="block font-medium"
           >{{ $t("watermark.mark-size") }}(px)</label
         >
         <input
@@ -48,17 +48,17 @@
           min="10"
           max="100"
           step="1"
-          class="mt-2 p-3 block w-full rounded-md bg-white text-gray-600 border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-gray-400/60 text-white border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         />
       </div>
       <div>
-        <label for="watermark-position" class="block text-lg font-medium">{{
+        <label for="watermark-position" class="block font-medium">{{
           $t("watermark.mark-position")
         }}</label>
         <select
           id="watermark-position"
           v-model="watermarkPosition"
-          class="mt-2 p-3 block w-full rounded-md bg-white text-gray-600 border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-gray-400/60 text-white border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         >
           <option value="center">
             {{ $t("watermark.mark-size-option.center") }}
@@ -78,13 +78,13 @@
         </select>
       </div>
       <div>
-        <label for="watermark-font" class="block text-lg font-medium">{{
+        <label for="watermark-font" class="block font-medium">{{
           $t("watermark.mark-font")
         }}</label>
         <select
           id="watermark-font"
           v-model="watermarkFont"
-          class="mt-2 p-3 block w-full rounded-md bg-white text-gray-600 border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
+          class="mt-2 p-3 block w-full rounded-md bg-gray-400/60 text-white border-2 border-gray-300 shadow-sm focus:outline-none focus:border-purple-700 focus:ring-2 focus:ring-purple-700 transition duration-300 ease-in-out"
         >
           <option value="SmileySans-Oblique">SmileySans-Oblique</option>
           <option value="Arial">Arial</option>
@@ -101,7 +101,7 @@
         :class="{
           'cursor-not-allowed': processing || processedImages.length === 0,
           'hover:bg-purple-700': processedImages.length > 0,
-          'hover:bg-red-300': processedImages.length === 0,
+          'hover:bg-red-400/80': processedImages.length === 0,
         }"
       >
         {{ $t("watermark.rerun") }}

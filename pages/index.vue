@@ -28,13 +28,13 @@
       <div class="flex flex-col md:flex-row justify-center">
         <router-link
           to="/watermark"
-          class="min-w-[30%] border border-gray-100/10 flex justify-center items-center p-6 rounded-lg shadow-md shadow-gray-300 hover:scale-105 transform transition duration-300 ease-in-out hover:bg-indigo-500"
+          class="min-w-[30%] border border-gray-100/10 flex justify-center items-center p-6 rounded-lg shadow-md shadow-gray-300 hover:scale-105 transform transition duration-300 ease-in-out bg-indigo-500/50 hover:bg-indigo-500"
         >
           <div class="text-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              class="h-16 w-16 mx-auto mb-4 text-indigo-600"
+              class="h-16 w-16 mx-auto mb-4"
               fill="currentColor"
             >
               <path
