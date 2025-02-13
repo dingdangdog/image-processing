@@ -21,7 +21,9 @@ export default defineNuxtConfig({
       ],
     },
   },
-  // dir: { public: "public" },
+  devServer: {
+    port: 13175,
+  },
   nitro: {
     prerender: {
       ignore: ["/manifest.json"],
@@ -29,9 +31,7 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/css/base.css"],
   runtimeConfig: {
-    public: {
-      domain: "",
-    },
+    public: {},
   },
   modules: ["@nuxtjs/i18n", "@nuxtjs/tailwindcss"],
 
