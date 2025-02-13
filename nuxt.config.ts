@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   app: {
     head: {
-      title: "老狗图片工厂",
+      title: "老狗图片处理厂",
       link: [
         {
           rel: "shortcut icon",

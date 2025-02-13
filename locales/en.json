@@ -1,10 +1,12 @@
 {
-  "title": "ImageFactory",
+  "title": "ImageProcessing - oldmoon.top",
+  "description": "ImageProcessing offers a suite of free and convenient online image editing tools.  Process your images directly in your browser – no server uploads required, ensuring speed and security.  Experience popular tools like watermark addition, image compression, format conversion, and more to easily enhance your photos!",
+  "keywords": "image processing, image editing, online tools, offline tools, image tools, free tools, image watermark, image compression, image format conversion, client-side processing, no upload, image security, image privacy, photo enhancement, web tools, image factory, 月上老狗, dingdangdog, oldmoon.top",
   "header": {
     "donate": "Donate"
   },
   "home": {
-    "welcome": "Welcome to ImageFactory",
+    "welcome": "Welcome to ImageProcessing",
     "tip": "Select the tool you need and start editing images!",
     "start-button": "Get Started",
     "watermark": {

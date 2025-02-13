@@ -2,7 +2,7 @@
   <footer class="min-h-16 bg-gray-950 flex items-center justify-center">
     <strong
       >Power By
-      <a href="https://github.com/dingdangdog" class="underline"
+      <a href="https://dingdangdog.github.io" class="underline"
         >dingdangdog</a
       ></strong
     >

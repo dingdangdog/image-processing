@@ -1,6 +1,20 @@
 <template>
   <Head>
     <Title>{{ $t("watermark.title") }} - {{ $t("title") }}</Title>
+    <Meta name="description" :content="$t('watermark.description')" />
+    <Meta name="keywords" :content="$t('watermark.description')" />
+
+    <!-- Twitter Card data -->
+    <!-- 或者用 summary_large_image 显示更大的图片 -->
+    <Meta name="twitter:card" content="summary" />
+    <Meta name="twitter:site" content="@oldmoontop" />
+    <Meta name="twitter:title" :content="$t('watermark.title')" />
+    <Meta name="twitter:description" :content="$t('watermark.keywords')" />
+    <Meta name="twitter:image" content="/faviconx2.jpg" />
+    <!-- 其他 SEO 标签 -->
+    <Meta property="og:title" :content="$t('watermark.title')" />
+    <Meta property="og:description" :content="$t('watermark.description')" />
+    <Meta property="og:image" content="/faviconx2.jpg" />
   </Head>
   <div class="p-4 max-w-3xl mx-auto">
     <h1 class="text-3xl sm:text-4xl font-extrabold mb-6 text-center">

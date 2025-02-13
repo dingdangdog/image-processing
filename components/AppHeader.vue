@@ -25,7 +25,7 @@
       class="w-1/2 h-full flex justify-end items-center space-x-1 md:space-x-4"
     >
       <a
-        href="https://github.com/dingdangdog/image-factory"
+        href="https://github.com/dingdangdog/image-processing"
         target="_blank"
         class="text-white hover:text-gray-300 transition-all duration-300 ease-in-out"
       >
