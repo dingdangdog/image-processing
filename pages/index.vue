@@ -34,7 +34,6 @@
               {{ $t("home.watermark.description") }}
             </p>
             <p
-              to="/watermark"
               class="mt-4 text-lg inline-block font-semibold text-blue-300 duration-200 ease-in-out"
             >
               {{ $t("home.start-button") }}
