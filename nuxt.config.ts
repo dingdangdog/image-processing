@@ -4,7 +4,20 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "老狗图片工厂",
-      link: [{ type: "" }],
+      link: [
+        {
+          rel: "manifest",
+          href: "/manifest.json",
+        },
+        {
+          rel: "shortcut icon",
+          href: "/favicon.png",
+        },
+        {
+          rel: "icon",
+          href: "/favicon.png",
+        },
+      ],
     },
   },
   compatibilityDate: "2024-04-03",
