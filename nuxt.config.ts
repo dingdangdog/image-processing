@@ -8,15 +8,15 @@ export default defineNuxtConfig({
       link: [
         {
           rel: "shortcut icon",
-          href: "favicon.png",
+          href: "/favicon.png",
         },
         {
           rel: "icon",
-          href: "favicon.png",
+          href: "/favicon.png",
         },
         {
           rel: "manifest",
-          href: "manifest.json",
+          href: "/manifest.json",
         },
       ],
     },
